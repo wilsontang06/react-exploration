@@ -4,7 +4,7 @@ import PokeView from './PokeView';
 import './App.css';
 
 function App() {
-  const [view, setView] = useState('input');
+  const [page, setPage] = useState('input');
   const [sprites, setSprites] = useState([]);
   const inputRef = useRef(null);
   const viewRef = useRef(null);
@@ -15,25 +15,27 @@ function App() {
     setSprites(sprites);
   };
 
-  // Conditional Rendering
-  const switchView = (e) => {
+  // set up changing state to switch pages
+  useEffect(() => {
+    inputRef.current.addEventListener('click', switchPage);
+    viewRef.current.addEventListener('click', switchPage);
+  });
+
+  const switchPage = (e) => {
+    // could use className instead
     if (e.target.textContent === 'Enter Pokemon') {
-      setView('input');
+      setPage('input');
     } else {
-      setView('view');
+      setPage('view');
     }
   };
 
-  useEffect(() => {
-    inputRef.current.addEventListener('click', switchView);
-    viewRef.current.addEventListener('click', switchView);
-  });
-
-  let currView;
-  if (view === 'input') {
-    currView = <PokeInput addPokemon={addPokemon} />;
+  // Conditional Rendering
+  let currPage;
+  if (page === 'input') {
+    currPage = <PokeInput addPokemon={addPokemon} />;
   } else {
-    currView = <PokeView spriteList={sprites}/>;
+    currPage = <PokeView spriteList={sprites}/>;
   }
 
   // logo image from pokeapi.co
@@ -47,7 +49,7 @@ function App() {
         <p className='nav-button' ref={inputRef}>Enter Pokemon</p>
         <p className='nav-button' ref={viewRef}>See Sprites</p>
       </section>
-      {currView}
+      {currPage}
     </main>
   );
 }
