@@ -1,0 +1,53 @@
+body {
+  background-color: #F6F6F2;
+}
+
+main {
+  font-family: Montserrat;
+  font-size: 16pt;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  width: 257px;
+  height: 103px;
+}
+
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 10px;
+
+  background-color: #6FB3B8;
+  border-radius: 10px;
+  width: 80%;
+}
+
+.nav-button {
+  color: white;
+  background-color: transparent;
+  margin: 15px;
+}
+
+.nav-button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.input-form {
+  width: 80%;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+}
+
+.sprite-container {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
